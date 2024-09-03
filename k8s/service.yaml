@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: atsapi-service
+spec:
+  selector:
+    app: atsapi-pod
+  ports:
+    - protocol: TCP
+      port: 80       # The port that the service exposes
+      targetPort: 8080 # The port on the container that the service should forward to
+  type: NodePort # This type is used to expose the service externally
