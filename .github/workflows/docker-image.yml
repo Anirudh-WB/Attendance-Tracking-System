@@ -30,6 +30,9 @@ jobs:
     - name: Push Docker image
       run: docker push ${{ secrets.DOCKER_USERNAME }}/atsapi:latest
 
+    - name: Create .kube directory
+      run: mkdir -p ~/.kube
+
     - name: Set up kubectl
       run: |
           echo "${{ secrets.KUBECONFIG }}" > ~/.kube/config
