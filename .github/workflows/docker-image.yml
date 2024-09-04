@@ -30,12 +30,15 @@ jobs:
     - name: Push Docker image
       run: docker push ${{ secrets.DOCKER_USERNAME }}/atsapi:latest
 
-    - name: Deploy to Kubernetes
-      env:
-        KUBECONFIG: ${{ secrets.KUBECONFIG }}
+    - name: Set up kubectl
       run: |
-        kubectl apply -f k8s/deployment.yaml
-        kubectl apply -f k8s/service.yaml
+          echo "${{ secrets.KUBECONFIG }}" > ~/.kube/config
+          kubectl config view
+
+    - name: Deploy to Kubernetes
+      run: |
+          kubectl apply -f k8s/deployment.yaml
+          kubectl apply -f k8s/service.yaml
 
 
 
