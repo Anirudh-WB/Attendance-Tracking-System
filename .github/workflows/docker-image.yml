@@ -38,6 +38,11 @@ jobs:
           echo "${{ secrets.KUBECONFIG }}" > ~/.kube/config
           kubectl config view
 
+    - name: Debug kubectl
+      run: |
+          kubectl cluster-info
+          kubectl get nodes
+
     - name: Deploy to Kubernetes
       run: |
           kubectl apply -f k8s/deployment.yaml
