@@ -36,3 +36,6 @@ jobs:
         
     - name: Check running containers
       run: docker ps
+
+    - name: GitHub Ip
+      run: ipconfig
