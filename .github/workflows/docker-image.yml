@@ -32,7 +32,7 @@ jobs:
 
     - name: Run Docker container
       run: |
-        docker run --name atsapi_container -d ${{ secrets.DOCKER_USERNAME }}/atsapi:latest
+        docker run --name atsapi_container -d -p 8080:6000 ${{ secrets.DOCKER_USERNAME }}/atsapi:latest
         
     - name: Check running containers
       run: docker ps
