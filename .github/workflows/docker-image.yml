@@ -30,23 +30,9 @@ jobs:
     - name: Push Docker image
       run: docker push ${{ secrets.DOCKER_USERNAME }}/atsapi:latest
 
-    - name: Create .kube directory
-      run: mkdir -p ~/.kube
-
-    - name: Set up kubectl
+    - name: Run Docker container
       run: |
-          echo "${{ secrets.KUBECONFIG }}" > ~/.kube/config
-          kubectl config view
-
-    - name: Debug kubectl
-      run: |
-          kubectl cluster-info
-          kubectl get nodes
-
-    - name: Deploy to Kubernetes
-      run: |
-          kubectl apply -f k8s/deployment.yaml
-          kubectl apply -f k8s/service.yaml
-
-
-
+        docker run --name atsapi_container -d ${{ secrets.DOCKER_USERNAME }}/atsapi:latest
+        
+    - name: Check running containers
+      run: docker ps
