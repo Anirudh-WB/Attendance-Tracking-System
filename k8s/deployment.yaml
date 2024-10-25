@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: atsapi-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: atsapi-pod
+  template:
+    metadata:
+      labels:
+        app: atsapi-pod
+    spec:
+      containers:
+      - name: atsapi
+        image: ${{ secrets.DOCKER_USERNAME }}/atsapi:latest
+        ports:
+        - containerPort: 8080
