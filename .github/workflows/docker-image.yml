@@ -38,4 +38,4 @@ jobs:
       run: docker ps
 
     - name: GitHub Ip
-      run: ipconfig
+      run: ifconfig
