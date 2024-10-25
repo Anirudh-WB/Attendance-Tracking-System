@@ -28,4 +28,11 @@ jobs:
     - name: Push Docker image
       run: docker push ${{ secrets.DOCKER_USERNAME }}/atsapi:latest
 
+    - name: Run Docker container
+      run: |
+        docker run --name atsapi_container -d ${{ secrets.DOCKER_USERNAME }}/atsapi:latest
+        
+    - name: Check running containers
+      run: docker ps
+
 
