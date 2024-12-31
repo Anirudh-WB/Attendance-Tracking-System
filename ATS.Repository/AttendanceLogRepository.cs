@@ -27,7 +27,7 @@ namespace ATS.Repository
             {
                 var firstNameParameter = new SqlParameter("@UserIds", firstName);
                 var data = await _dbContext.Set<GetStatusOfAttendanceLog>()
-                    .FromSqlRaw("EXECUTE dbo.GetPacificStatusTemp @UserIds", firstNameParameter)
+                    .FromSqlRaw("EXECUTE dbo.GetSpecificStatus @UserIds", firstNameParameter)
                     .ToListAsync();
                 return data;
             }
@@ -246,9 +246,9 @@ namespace ATS.Repository
         {
             try
             {
-                var dateParameter = new SqlParameter("@Date", Date);
+                //var dateParameter = new SqlParameter("@Date", Date);
                 var data = await _dbContext.Set<GetStatusOfAttendanceLog>()
-                               .FromSqlRaw("EXECUTE dbo.GetEmployeeAttendanceSummary @Date", dateParameter)
+                               .FromSqlRaw("EXECUTE dbo.GetEmployeeAttendanceSummary")
                                .ToListAsync();
                 return data;
             }
@@ -310,6 +310,29 @@ namespace ATS.Repository
                 var data = await _dbContext.Set<MisEntrySummary>()
                     .FromSqlRaw("EXECUTE dbo.GetMisEntrySummary @userId, @date", userIdParameter, DateParameter)
                     .ToListAsync();
+
+                return data;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public async Task<IEnumerable<GetAverageHours>> GetAverageHoursReport(long? userId, DateTime date)
+        {
+            try
+            {
+                var userIdParameter = new SqlParameter("@UserId", SqlDbType.BigInt)
+                {
+                    Value = userId.HasValue ? (object)userId.Value : DBNull.Value
+                };
+
+                var DateParameter = new SqlParameter("@date", date);
+
+                var data = await _dbContext.Set<GetAverageHours>()
+                        .FromSqlRaw("EXECUTE dbo.GetAverageReport @userId @date", userIdParameter,DateParameter)
+                        .ToListAsync();
 
                 return data;
             }

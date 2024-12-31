@@ -1,0 +1,9 @@
+﻿D:\Projects\Attendance-Tracking-System\ATS.DTO\AccessPageDto.cs
+D:\Projects\Attendance-Tracking-System\ATS.DTO\AttendanceLogDto.cs
+D:\Projects\Attendance-Tracking-System\ATS.DTO\AuthDto.cs
+D:\Projects\Attendance-Tracking-System\ATS.DTO\DesignationDto.cs
+D:\Projects\Attendance-Tracking-System\ATS.DTO\EmployeeDetailDto.cs
+D:\Projects\Attendance-Tracking-System\ATS.DTO\GenderDto.cs
+D:\Projects\Attendance-Tracking-System\ATS.DTO\PageDto.cs
+D:\Projects\Attendance-Tracking-System\ATS.DTO\RoleDto.cs
+D:\Projects\Attendance-Tracking-System\ATS.DTO\UserDto.cs

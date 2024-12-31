@@ -277,5 +277,19 @@ namespace ATS.API.Controllers
                 return NotFound(ex.Message);
             }
         }
+
+        [HttpGet("avgtotalhours")]
+        public async Task<ActionResult<GetAvgHoursDto>> GetAverageTotalHour([FromQuery] long? userId, DateTime? date)
+        {
+            try
+            {
+                var res = await _attendanceLogServices.GetAvgTotalHoursOfEmployee(userId, date);
+                return Ok(res);
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
     }
 }

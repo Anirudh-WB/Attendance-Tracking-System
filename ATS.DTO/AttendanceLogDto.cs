@@ -107,4 +107,12 @@ namespace ATS.DTO
         string LastName,
         int TotalCount
     );
+
+
+    public record GetAvgHoursDto(
+      long UserId,
+      TimeSpan AvgTotalHours,
+      TimeSpan AvgTotalInHours,
+      TimeSpan AvgTotalOutHours
+    );
 }
