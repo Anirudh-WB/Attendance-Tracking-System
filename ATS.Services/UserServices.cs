@@ -261,8 +261,8 @@ namespace ATS.Services
                   employee.First().ProfilePic,
                   employee.First().FirstName,
                   employee.First().LastName,
-                  userDto.Email,
-                  userDto.Password,
+                  userDto.Email, 
+                  userDto.ContactNo,
                   userDto.RoleId,
                   accessPageDtos
                 );

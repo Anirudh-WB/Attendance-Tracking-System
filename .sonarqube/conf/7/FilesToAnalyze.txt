@@ -1,0 +1,8 @@
+﻿D:\Projects\Attendance-Tracking-System\ATS.Services\AccessPageServices.cs
+D:\Projects\Attendance-Tracking-System\ATS.Services\AttendanceLogServices.cs
+D:\Projects\Attendance-Tracking-System\ATS.Services\DesignationServices.cs
+D:\Projects\Attendance-Tracking-System\ATS.Services\EmployeeDetailServices.cs
+D:\Projects\Attendance-Tracking-System\ATS.Services\GenderServices.cs
+D:\Projects\Attendance-Tracking-System\ATS.Services\PageServices.cs
+D:\Projects\Attendance-Tracking-System\ATS.Services\RoleServices.cs
+D:\Projects\Attendance-Tracking-System\ATS.Services\UserServices.cs

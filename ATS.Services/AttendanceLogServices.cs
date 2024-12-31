@@ -544,6 +544,27 @@ namespace ATS.Services
 
                 throw;
             }
+        }   
+        public async Task<IEnumerable<GetAvgHoursDto>> GetAvgTotalHoursOfEmployee(long? userId, DateTime? date)
+        {
+            try
+            {
+                DateTime Cdate = date == DateTime.MinValue || date == null ? DateTime.Now.Date : (DateTime)date;
+                var data = await _attendanceLogRepository.GetAverageHoursReport(userId, Cdate);
+
+                var res = data.Select(li => new GetAvgHoursDto(
+                    li.UserId,
+                    li.TotalAvg,
+                    li.TotalInAvg,
+                    li.TotalOutAvg
+                ));
+
+                return res.ToList();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

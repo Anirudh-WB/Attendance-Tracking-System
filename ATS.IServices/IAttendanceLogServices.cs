@@ -38,5 +38,6 @@ namespace ATS.IServices
 
         Task<IEnumerable<GetAttendanceLogsWithDetailsDto>> CreateMultipleAttendanceLogsAsync(IEnumerable<CreateAttendanceLogDto> attendanceLogsDto);
 
+        Task<IEnumerable<GetAvgHoursDto>> GetAvgTotalHoursOfEmployee(long? userId, DateTime? date);
     }
 }

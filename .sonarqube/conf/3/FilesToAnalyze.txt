@@ -1,0 +1,8 @@
+﻿D:\Projects\Attendance-Tracking-System\ATS.IServices\IAccessPageServices.cs
+D:\Projects\Attendance-Tracking-System\ATS.IServices\IAttendanceLogServices.cs
+D:\Projects\Attendance-Tracking-System\ATS.IServices\IDesignationServices.cs
+D:\Projects\Attendance-Tracking-System\ATS.IServices\IEmployeeDetailServices.cs
+D:\Projects\Attendance-Tracking-System\ATS.IServices\IGenderServices.cs
+D:\Projects\Attendance-Tracking-System\ATS.IServices\IPageServices.cs
+D:\Projects\Attendance-Tracking-System\ATS.IServices\IRoleServices.cs
+D:\Projects\Attendance-Tracking-System\ATS.IServices\IUserServices.cs
