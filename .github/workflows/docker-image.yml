@@ -16,6 +16,7 @@ jobs:
     - uses: actions/checkout@v4
     - name: Log in to Docker Hub
       run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
     - name: Build Docker image
       run: |
         IMAGE_TAG="atsapi:$(date +%s)"
@@ -25,7 +26,16 @@ jobs:
     - name: Tag Docker image as latest
       run: |
         docker tag ${{ env.IMAGE_TAG }} ${{ secrets.DOCKER_USERNAME }}/atsapi:latest
+
     - name: Push Docker image
       run: docker push ${{ secrets.DOCKER_USERNAME }}/atsapi:latest
 
+    - name: Run Docker container
+      run: |
+        docker run --name atsapi_container -d -p 8080:6000 ${{ secrets.DOCKER_USERNAME }}/atsapi:latest
+        
+    - name: Check running containers
+      run: docker ps
 
+    - name: GitHub Ip
+      run: ifconfig -a

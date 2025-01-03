@@ -382,7 +382,7 @@ namespace ATS.Services
                 model.ProfilePic,
                 model.FirstName,
                 model.LastName,
-                DateOnly.FromDateTime((DateTime)model.PeriodEnd),
+                DateOnly.FromDateTime((DateTime)model?.PeriodStart),
                 Correction(model.PeriodStart.ToString("HH:mm:ss")),
                 model.PeriodEnd != null ?  Correction(model.PeriodEnd?.ToString("HH:mm:ss")) : null,
                 Correction(model.TotalTimeSpanFormatted)

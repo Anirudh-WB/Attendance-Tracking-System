@@ -1,9 +1,0 @@
-﻿D:\Projects\Attendance-Tracking-System\ATS.IRepository\IAccessPageRepository.cs
-D:\Projects\Attendance-Tracking-System\ATS.IRepository\IAttendanceLogRepository.cs
-D:\Projects\Attendance-Tracking-System\ATS.IRepository\IDesignationRepository.cs
-D:\Projects\Attendance-Tracking-System\ATS.IRepository\IEmployeeDetailRepository.cs
-D:\Projects\Attendance-Tracking-System\ATS.IRepository\IGenderRepository.cs
-D:\Projects\Attendance-Tracking-System\ATS.IRepository\IPageRepository.cs
-D:\Projects\Attendance-Tracking-System\ATS.IRepository\IRepository.cs
-D:\Projects\Attendance-Tracking-System\ATS.IRepository\IRoleRepository.cs
-D:\Projects\Attendance-Tracking-System\ATS.IRepository\IUserRepository.cs
