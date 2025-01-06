@@ -85,6 +85,5 @@
     <Build Include="dbo\Stored Procedures\GetSumOfInTimeDifferences.sql" />
     <Build Include="dbo\Stored Procedures\GetMisEntryReport.sql" />
     <Build Include="dbo\Stored Procedures\GetMisEntrySummary.sql" />
-    <Build Include="dbo\Stored Procedures\GetSumOfInTimeDifferencesTemp.sql" />
   </ItemGroup>
 </Project>
