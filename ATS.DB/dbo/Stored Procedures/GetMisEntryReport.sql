@@ -4,13 +4,6 @@ CREATE   PROCEDURE [dbo].[GetMisEntryReport]
     @date DATE
 AS
 BEGIN
-    DECLARE @MisEntries TABLE (
-        Id BIGINT,
-        UserId BIGINT,
-        AttendanceLogTime DATETIME,
-        CheckType VARCHAR(5)
-    );
-
     WITH GroupedLogs AS (
         SELECT
             Id,
