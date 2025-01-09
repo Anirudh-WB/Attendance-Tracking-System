@@ -46,7 +46,7 @@ namespace ATS.Services
         public string DateException(DateTime startDate, DateTime endDate) { 
             if(startDate > endDate)
             {
-                throw new Exception("Start Date is should be less than End Date");
+                throw new Exception("Start Date should be less than End Date");
             }
 
             return string.Empty;
@@ -402,8 +402,8 @@ namespace ATS.Services
                 var results = await _attendanceLogRepository.GetTotalOutHours(userId, start, end);
 
                 var dtoList = results.Select(model => new GetOutActivityRecordDto(
-                    Correction(model.InTime.ToString("HH:mm:ss")),
                     Correction(model.OutTime.ToString("HH:mm:ss")),
+                    model.InTime != null ? Correction(model.InTime?.ToString("HH:mm:ss")) : null,
                     TimeSpan.Parse(model.TotalOutHours)
                 ));
 

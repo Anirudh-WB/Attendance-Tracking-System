@@ -9,8 +9,8 @@ namespace ATS.Model
 {
     public class GetTotalOutHours
     {
-        public DateTime InTime { get; set; }
         public DateTime OutTime { get; set; }
+        public DateTime? InTime { get; set; }
         public string TotalOutHours { get; set; }
     }
 }
