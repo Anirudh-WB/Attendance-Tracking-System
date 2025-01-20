@@ -9,13 +9,41 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 var configuration = builder.Configuration;
-
 var connectionString = configuration.GetConnectionString("DefaultConnection");
 
-builder.Services.AddDbContext<ATSDbContext>(option => option.UseSqlServer(connectionString, b => b.MigrationsAssembly("ATS.API")));
+// Configure Entity Framework
+builder.Services.AddDbContext<ATSDbContext>(option =>
+    option.UseSqlServer(connectionString, b => b.MigrationsAssembly("ATS.API"))
+);
 
+// Add SignalR
 builder.Services.AddSignalR();
 
+// Configure CORS policy
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowMyAngularApp", policy =>
+    {
+        policy
+            .WithOrigins(
+                "http://localhost:4200",
+                "http://192.168.29.191:4200",
+                "http://192.168.29.207:4200",
+                "http://192.168.29.242:4200",
+                "http://localhost:62292",
+                "http://localhost:58842",
+                "http://127.0.0.1:8000",
+                "http://localhost:8000",
+                "http://10.10.10.13:8000",
+                "http://10.10.10.13:4200"
+            )
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials();
+    });
+});
+
+// Dependency injection for repositories and services
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 builder.Services.AddScoped<IRoleServices, RoleServices>();
 
@@ -40,44 +68,19 @@ builder.Services.AddScoped<IPageServices, PageServices>();
 builder.Services.AddScoped<IAccessPageRepository, AccessPageRepository>();
 builder.Services.AddScoped<IAccessPageServices, AccessPageServices>();
 
-// Configure CORS policy
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy(name: "AllowMyAngularApp",
-        policy =>
-        {
-            policy
-                .WithOrigins("http://localhost:4200")
-                .WithOrigins("http://192.168.29.191:4200")
-                .WithOrigins("http://192.168.29.207:4200")
-                .WithOrigins("http://192.168.29.242:4200")
-                .WithOrigins("http://localhost:62292")
-                .WithOrigins("http://localhost:58842") // Replace with your Angular app URL
-                .AllowAnyHeader()
-                .AllowAnyMethod()
-                .AllowCredentials(); // Allow credentials (cookies, authorization headers, etc.)
-        });
-});
-
-
-
 builder.Services.AddControllers();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-
+// Middleware Configuration
+app.UseCors("AllowMyAngularApp"); // CORS must be used before routing
+app.UseRouting();
 app.UseAuthorization();
 
-app.UseCors("AllowMyAngularApp");
-
-app.MapControllers();
-
-app.UseRouting();
-
-app.UseEndpoints(endpoint =>
+app.UseEndpoints(endpoints =>
 {
-    endpoint.MapHub<AtsHubs>("/atsHub");
+    endpoints.MapHub<AtsHubs>("/atsHub");
+    endpoints.MapControllers();
 });
 
 app.Run();
