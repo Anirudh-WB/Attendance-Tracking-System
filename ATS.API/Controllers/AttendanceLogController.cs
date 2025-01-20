@@ -171,7 +171,7 @@ namespace ATS.API.Controllers
             {
                 return NotFound(ex.Message);
             }
-        }
+            }
 
         // GET api/<AttendanceLogController>/current-status?type=
         [HttpGet("current-status")]

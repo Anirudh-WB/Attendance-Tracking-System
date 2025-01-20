@@ -18,8 +18,8 @@ namespace ATS.Model
         public long UserId { get; set; }
         public string? EmployeeCode { get; set; } = string.Empty;
 
-        [Required(ErrorMessage ="First Name is Required"), MaxLength(50)]
-        public string FirstName { get; set; } = string.Empty ;
+        [Required(ErrorMessage = "First Name is Required"), MaxLength(50)]
+        public string FirstName { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Last Name is Required"), MaxLength(50)]
         public string LastName { get; set; } = string.Empty;
@@ -30,7 +30,7 @@ namespace ATS.Model
         public virtual Gender Gender { get; set; }
 
         [ForeignKey("Genders")]
-        public long GenderId { get; set; } = 1;
+        public long GenderId { get; set; } = 2;
 
         public string ProfilePic { get; set; } = string.Empty;
 
